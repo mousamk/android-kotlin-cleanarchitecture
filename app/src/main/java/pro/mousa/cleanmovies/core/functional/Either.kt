@@ -1,4 +1,4 @@
-package pro.mousa.cleanmovies.functional
+package pro.mousa.cleanmovies.core.functional
 
 sealed class Either<out L, out R> {
 
