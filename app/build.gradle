@@ -67,7 +67,7 @@ dependencies {
     compileOnly applicationDependencies.javaxAnnotation
     compileOnly applicationDependencies.javaxInject
 
-    //Application dependencies
+    //AndroidApplication dependencies
     implementation applicationDependencies.kotlin
     implementation applicationDependencies.kotlinCoroutines
     implementation applicationDependencies.kotlinCoroutinesAndroid
