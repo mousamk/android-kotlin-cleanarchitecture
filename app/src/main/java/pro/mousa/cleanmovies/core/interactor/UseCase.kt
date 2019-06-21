@@ -1,5 +1,6 @@
 package pro.mousa.cleanmovies.core.interactor
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ abstract class UseCase<out Type, in Params> where Type : Any {
 
     operator fun invoke(params: Params, onResult: (Either<Failure, Type>) -> Unit = {}) {
         val job = GlobalScope.async { run(params) }
-        GlobalScope.launch(/*How to set UI thread?*/) { onResult(job.await()) }
+        GlobalScope.launch(Dispatchers.Main) { onResult(job.await()) }
     }
 
     class None
