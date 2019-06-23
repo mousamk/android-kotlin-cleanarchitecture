@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="movies_string_title">Movies</string>
+
+    <!-- Animation -->
+    <string name="movie_transition_poster">moviePosterTransition</string>
 </resources>
