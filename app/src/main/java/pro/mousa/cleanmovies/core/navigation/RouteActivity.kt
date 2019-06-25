@@ -1,7 +1,6 @@
 package pro.mousa.cleanmovies.core.navigation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import pro.mousa.cleanmovies.AndroidApplication
 import pro.mousa.cleanmovies.core.di.ApplicationComponent
@@ -15,8 +14,8 @@ class RouteActivity : AppCompatActivity() {
 
     @Inject internal lateinit var navigator: Navigator
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         appComponent.inject(this)
         navigator.showMain(this)
     }
