@@ -20,7 +20,7 @@ class MoviesAdapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(R.layout.row_movie))
 
-    override fun getItemCount() = 0
+    override fun getItemCount() = collection.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(collection[position])
