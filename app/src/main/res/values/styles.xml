@@ -54,7 +54,7 @@
         <item name="android:paddingLeft">20dp</item>
     </style>
 
-    <style name="MovieDetailsText">
+    <style name="MovieDetailsText" parent="MovieDetailsTitle">
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">@dimen/movie_details_text</item>
         <item name="android:paddingBottom">25dp</item>
