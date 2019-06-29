@@ -1,6 +1,7 @@
 package pro.mousa.cleanmovies.features.movies
 
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 import kotlinx.android.synthetic.main.row_movie.moviePoster
 import kotlinx.android.synthetic.main.toolbar.*
@@ -28,6 +29,25 @@ class MovieDetailsFragment : BaseFragment() {
             observe(movieDetails, ::renderMovieDetails)
             failure(failure, ::handleFailure)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (firstTimeCreated(savedInstanceState)) {
+            movieDetailsViewModel.loadMovieDetails((arguments?.get(PARAM_MOVIE) as MovieView).id)
+        } else {
+            movieDetailsAnimator.scaleUpView(moviePlay)
+            movieDetailsAnimator.cancelTransition(moviePoster)
+            moviePoster.loadFromUrl((arguments!![PARAM_MOVIE] as MovieView).poster)
+        }
+    }
+
+    override fun onBackPressed() {
+        movieDetailsAnimator.fadeVisible(scrollView, movieDetails)
+        if (moviePlay.isVisible())
+            movieDetailsAnimator.scaleDownView(moviePlay)
+        else
+            movieDetailsAnimator.cancelTransition(moviePoster)
     }
 
     private fun renderMovieDetails(movie: MovieDetailsView?) {
